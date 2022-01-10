@@ -1,0 +1,49 @@
+﻿@model List<CustomUser>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="header-title pb-3 mt-0">Friends List</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr class="align-self-center">
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>User Name</th>
+                                    <th>Email</th>
+                                    <th>Date of birth</th>
+                                    <th>Send Message</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var f in Model)
+                                    {
+                                        <tr>
+                                            <td>@f.Name</td>
+                                            <td>@f.Surname</td>
+                                            <td>@f.UserName</td>
+                                            <td>@f.Email</td>
+                                            <td>@f.BirthDate.ToString("d MMM, yyyy")</td>
+                                            <td>
+                                                <a class="btn btn-primary" asp-controller="Chat" asp-action="Message" asp-route-Rid="@f.Id" >Send Message</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--end table-responsive-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
